@@ -1,0 +1,16 @@
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\bin\Debug\QuanLyMaverikStudio.exe.config
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\bin\Debug\QuanLyMaverikStudio.exe
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\bin\Debug\QuanLyMaverikStudio.pdb
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.csproj.AssemblyReference.cache
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.Properties.Resources.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.csproj.GenerateResource.cache
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.csproj.CoreCompileInputs.cache
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.exe
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.pdb
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.Login.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.HomePage.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.ChangePassword.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.UsersList.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.GUI.InsertUsers.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.GUI.UpdateUsers.resources
+D:\C#\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.GUI.TrashUsers.resources
