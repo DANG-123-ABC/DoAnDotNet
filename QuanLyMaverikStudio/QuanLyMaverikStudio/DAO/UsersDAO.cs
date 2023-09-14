@@ -91,13 +91,51 @@ namespace QuanLyMaverikStudio.DAO
             }
         }
 
+        public DataTable GetAllUsersDeleted()
+        {
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.deleted_at as 'Thời gian xóa' " +
+                "from dbo.users as u " +
+                "inner join dbo.groups as g on u.group_id = g.id where u.deleted_at is not null " +
+                "order by u.deleted_at desc";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data.Rows.Count > 0)
+            {
+                return data;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public DataTable Search(int iD, string name, string account, int group_id, string dateFrom, string dateTo)
         {
             string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.updated_at as 'Thời gian cập nhật' " +
                 "from dbo.users as u " +
                 "inner join dbo.groups as g on u.group_id = g.id " +
-                "where (-1 = @id1 or u.id = @id2 ) and (u.name like @name ) and (u.account like @account ) and (-1 = @group_id1 or u.group_id = @group_id2 ) and ('' = @dateFrom1 or CONVERT(date, u.created_at) > @dateFrom2 ) and ('' = @dateTo1 or CONVERT(date, u.created_at) < @dateTo2 ) and u.deleted_at is null "+
+                "where (-1 = @id1 or u.id = @id2 ) and (u.name like @name ) and (u.account like @account ) and (-1 = @group_id1 or u.group_id = @group_id2 ) and ('' = @dateFrom1 or CONVERT(date, u.created_at) >= @dateFrom2 ) and ('' = @dateTo1 or CONVERT(date, u.created_at) <= @dateTo2 ) and u.deleted_at is null "+
                 "order by u.created_at desc";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { iD, iD, name, account, group_id, group_id, dateFrom, dateFrom, dateTo, dateTo });
+
+            if (data.Rows.Count > 0)
+            {
+                return data;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public DataTable SearchDeleted(int iD, string name, string account, int group_id, string dateFrom, string dateTo)
+        {
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.deleted_at as 'Thời gian xóa' " +
+                "from dbo.users as u " +
+                "inner join dbo.groups as g on u.group_id = g.id " +
+                "where (-1 = @id1 or u.id = @id2 ) and (u.name like @name ) and (u.account like @account ) and (-1 = @group_id1 or u.group_id = @group_id2 ) and ('' = @dateFrom1 or CONVERT(date, u.created_at) >= @dateFrom2 ) and ('' = @dateTo1 or CONVERT(date, u.created_at) <= @dateTo2 ) and u.deleted_at is not null " +
+                "order by u.deleted_at desc";
             DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { iD, iD, name, account, group_id, group_id, dateFrom, dateFrom, dateTo, dateTo });
 
             if (data.Rows.Count > 0)
@@ -115,6 +153,30 @@ namespace QuanLyMaverikStudio.DAO
             string query = "update dbo.users set deleted_at = @timeNow where id = @id and group_id <> 1";
 
             if(DataProvider.Instance.ExecuteNonQuery(query, new object[] { timeNow, id }) > 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Restore(int id)
+        {
+            string query = "update dbo.users set deleted_at = null where id = @id ";
+
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id }) > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Destroy(int id)
+        {
+            string query = "delete from dbo.users where id = @id ";
+
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id }) > 0)
+            {
                 return true;
             }
 

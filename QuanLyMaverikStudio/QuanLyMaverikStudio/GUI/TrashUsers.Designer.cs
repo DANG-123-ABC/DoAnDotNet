@@ -58,6 +58,7 @@
             this.btnReset.TabIndex = 37;
             this.btnReset.Text = "Làm mới";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // cbTime
             // 
@@ -65,7 +66,7 @@
             this.cbTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbTime.Location = new System.Drawing.Point(598, 149);
             this.cbTime.Name = "cbTime";
-            this.cbTime.Size = new System.Drawing.Size(190, 23);
+            this.cbTime.Size = new System.Drawing.Size(269, 32);
             this.cbTime.TabIndex = 36;
             this.cbTime.Text = "Tìm kiếm theo cả thời gian";
             this.cbTime.UseVisualStyleBackColor = true;
@@ -76,7 +77,7 @@
             this.lbDateTo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbDateTo.Location = new System.Drawing.Point(563, 71);
             this.lbDateTo.Name = "lbDateTo";
-            this.lbDateTo.Size = new System.Drawing.Size(68, 19);
+            this.lbDateTo.Size = new System.Drawing.Size(95, 28);
             this.lbDateTo.TabIndex = 35;
             this.lbDateTo.Text = "Đến ngày";
             // 
@@ -86,7 +87,7 @@
             this.lbDateFrom.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbDateFrom.Location = new System.Drawing.Point(563, 5);
             this.lbDateFrom.Name = "lbDateFrom";
-            this.lbDateFrom.Size = new System.Drawing.Size(58, 19);
+            this.lbDateFrom.Size = new System.Drawing.Size(82, 28);
             this.lbDateFrom.TabIndex = 34;
             this.lbDateFrom.Text = "Từ ngày";
             // 
@@ -95,7 +96,7 @@
             this.dtpDateTo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDateTo.Location = new System.Drawing.Point(567, 94);
             this.dtpDateTo.Name = "dtpDateTo";
-            this.dtpDateTo.Size = new System.Drawing.Size(221, 25);
+            this.dtpDateTo.Size = new System.Drawing.Size(221, 34);
             this.dtpDateTo.TabIndex = 33;
             // 
             // dtpDateFrom
@@ -103,7 +104,7 @@
             this.dtpDateFrom.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDateFrom.Location = new System.Drawing.Point(567, 32);
             this.dtpDateFrom.Name = "dtpDateFrom";
-            this.dtpDateFrom.Size = new System.Drawing.Size(221, 25);
+            this.dtpDateFrom.Size = new System.Drawing.Size(221, 34);
             this.dtpDateFrom.TabIndex = 32;
             // 
             // cmbPermission
@@ -113,7 +114,7 @@
             this.cmbPermission.FormattingEnabled = true;
             this.cmbPermission.Location = new System.Drawing.Point(292, 94);
             this.cmbPermission.Name = "cmbPermission";
-            this.cmbPermission.Size = new System.Drawing.Size(221, 25);
+            this.cmbPermission.Size = new System.Drawing.Size(221, 36);
             this.cmbPermission.TabIndex = 31;
             // 
             // lbPermission
@@ -122,7 +123,7 @@
             this.lbPermission.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbPermission.Location = new System.Drawing.Point(288, 71);
             this.lbPermission.Name = "lbPermission";
-            this.lbPermission.Size = new System.Drawing.Size(50, 19);
+            this.lbPermission.Size = new System.Drawing.Size(69, 28);
             this.lbPermission.TabIndex = 30;
             this.lbPermission.Text = "Quyền";
             // 
@@ -131,7 +132,7 @@
             this.txtAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtAccount.Location = new System.Drawing.Point(292, 32);
             this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(221, 25);
+            this.txtAccount.Size = new System.Drawing.Size(221, 34);
             this.txtAccount.TabIndex = 29;
             // 
             // lbAccount
@@ -140,7 +141,7 @@
             this.lbAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbAccount.Location = new System.Drawing.Point(288, 9);
             this.lbAccount.Name = "lbAccount";
-            this.lbAccount.Size = new System.Drawing.Size(66, 19);
+            this.lbAccount.Size = new System.Drawing.Size(94, 28);
             this.lbAccount.TabIndex = 28;
             this.lbAccount.Text = "Tài khoản";
             // 
@@ -149,7 +150,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(16, 94);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(221, 25);
+            this.txtName.Size = new System.Drawing.Size(221, 34);
             this.txtName.TabIndex = 27;
             // 
             // lbName
@@ -158,7 +159,7 @@
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbName.Location = new System.Drawing.Point(12, 71);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(94, 19);
+            this.lbName.Size = new System.Drawing.Size(130, 28);
             this.lbName.TabIndex = 26;
             this.lbName.Text = "Tên nhân viên";
             // 
@@ -167,7 +168,7 @@
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtID.Location = new System.Drawing.Point(16, 32);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(221, 25);
+            this.txtID.Size = new System.Drawing.Size(221, 34);
             this.txtID.TabIndex = 25;
             // 
             // lbID
@@ -176,7 +177,7 @@
             this.lbID.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbID.Location = new System.Drawing.Point(12, 9);
             this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(93, 19);
+            this.lbID.Size = new System.Drawing.Size(129, 28);
             this.lbID.TabIndex = 24;
             this.lbID.Text = "Mã nhân viên";
             // 
@@ -189,6 +190,7 @@
             this.btnSearch.TabIndex = 23;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnDelete
             // 
@@ -200,6 +202,7 @@
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Xóa vĩnh viễn";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRestore
             // 
@@ -210,6 +213,7 @@
             this.btnRestore.TabIndex = 20;
             this.btnRestore.Text = "Khôi phục";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // dgvListUsers
             // 
@@ -222,6 +226,8 @@
             this.dgvListUsers.RowHeadersWidth = 30;
             this.dgvListUsers.Size = new System.Drawing.Size(796, 265);
             this.dgvListUsers.TabIndex = 19;
+            this.dgvListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListUsers_CellClick);
+            this.dgvListUsers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvListUsers_RowHeaderMouseClick);
             // 
             // TrashUsers
             // 
