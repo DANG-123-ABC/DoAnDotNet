@@ -12,7 +12,7 @@ namespace QuanLyMaverikStudio.DAO
     public class DataProvider
     {
         private static DataProvider instance;
-        private string connectStr = "Data Source = PC\\TAVANTHANHHUNG; Initial Catalog = QuanLyMaverikStudio; Integrated Security = SSPI";
+        private string connectStr = "Data Source = DESKTOP-HI6L19F\\SQLEXPRESS; Initial Catalog = QuanLyMaverikStudio; Integrated Security = SSPI";
         public static DataProvider Instance
         {
             get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; } 
