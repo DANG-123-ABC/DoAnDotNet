@@ -52,12 +52,12 @@ namespace QuanLyMaverikStudio
 
         public void LoadInfo()
         {
-            lbNameStaff.Text = "Tên: " + user.Rows[0]["Tên người dùng"];
+            lbNameStaff.Text = "Tên: " + user.Rows[0]["Tên nhân viên"];
 
-            lbPermission.Text = "Quyền: " + user.Rows[0]["Tên quyền"];
+            lbPermission.Text = "Quyền: " + user.Rows[0]["Quyền"];
 
             string dateNow = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-            bool check = TimeKeepingDAO.Instance.CheckDiemDanh((int)user.Rows[0]["id"], dateNow);
+            bool check = TimeKeepingDAO.Instance.CheckDiemDanh((int)user.Rows[0]["Mã nhân viên"], dateNow);
 
             if(check == true)
             {
@@ -72,7 +72,7 @@ namespace QuanLyMaverikStudio
         private void btnDiemDanh_Click(object sender, EventArgs e)
         {
             string dateNow = DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Day.ToString();
-            bool check = TimeKeepingDAO.Instance.CheckDiemDanh((int)user.Rows[0]["id"], dateNow);
+            bool check = TimeKeepingDAO.Instance.CheckDiemDanh((int)user.Rows[0]["Mã nhân viên"], dateNow);
 
             if(check == true)
             {
@@ -81,7 +81,7 @@ namespace QuanLyMaverikStudio
             else
             {
                 string dateNowFull = DateTime.Now.ToString();
-                bool diemDanh = TimeKeepingDAO.Instance.DiemDanh((int)user.Rows[0]["id"], dateNowFull);
+                bool diemDanh = TimeKeepingDAO.Instance.DiemDanh((int)user.Rows[0]["Mã nhân viên"], dateNowFull);
 
                 if(diemDanh == true)
                 {
@@ -98,6 +98,7 @@ namespace QuanLyMaverikStudio
 
         private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.user = UsersDAO.Instance.GetUser((int)this.user.Rows[0]["Mã nhân viên"]);
             ChangePassword fAccountInfo = new ChangePassword(this.user);
 
             fAccountInfo.ShowDialog();
@@ -105,22 +106,31 @@ namespace QuanLyMaverikStudio
 
         private void danhSáchNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsersList fUsersList = new UsersList();
-
+            UsersList fUsersList = new UsersList(this.user);
+            this.Hide();
             fUsersList.ShowDialog();
-        }
-
-        private void thêmNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            InsertUsers fInsertUsers = new InsertUsers();
-            fInsertUsers.ShowDialog();
+            this.Close();
         }
 
         private void thùngRácToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TrashUsers fTrashUsers = new TrashUsers();
-
+            TrashUsers fTrashUsers = new TrashUsers(this.user);
+            this.Hide();
             fTrashUsers.ShowDialog();
+            this.Close();
+        }
+
+        private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoriesManager fCategoriesManager = new CategoriesManager(this.user);
+            this.Hide();
+            fCategoriesManager.ShowDialog();
+            this.Close();
+        }
+
+        private void homePageMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đó là trang hiện tại");
         }
     }
 }

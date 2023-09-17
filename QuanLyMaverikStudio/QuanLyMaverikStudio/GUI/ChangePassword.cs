@@ -22,24 +22,35 @@ namespace QuanLyMaverikStudio
         {
             InitializeComponent();
             this.user = user;
+
+            Load();
         }
-        private void btnBack_Click(object sender, EventArgs e)
+
+        public void Load()
         {
-            this.Close();
+            lbID.Text = $"Mã: {this.user.Rows[0]["Mã nhân viên"].ToString()}";
+            lbName.Text = $"Tên: {this.user.Rows[0]["Tên nhân viên"].ToString()}";
+            lbAccount.Text = $"Tài khoản: {this.user.Rows[0]["Tài khoản"].ToString()}";
+            lbPhonenumber.Text = $"Số điện thoại: {this.user.Rows[0]["phone_number"].ToString()}";
+            lbAddress.Text = $"Địa chỉ: {this.user.Rows[0]["Địa chỉ"].ToString()}";
+            lbPermission.Text = $"Quyền: {this.user.Rows[0]["Quyền"].ToString()}";
+            lbEmail.Text = $"Email: {this.user.Rows[0]["email"].ToString()}";
+            lbSalary.Text = $"Lương: {this.user.Rows[0]["Lương"].ToString()}";
+            DateTime dateTime = (DateTime)this.user.Rows[0]["date_of_birth"];
+            lbDateOfBirth.Text = $"Ngày sinh: {dateTime.ToString("dd/MM/yyyy")}";
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if(Validate())
             {
-                bool checkChangPassword = UsersDAO.Instance.changePassword((int)this.user.Rows[0]["id"], HelpSHA256.Instance.Hash(txtPassword.Text), HelpSHA256.Instance.Hash(txtNewPassword.Text));
+                bool checkChangPassword = UsersDAO.Instance.changePassword((int)this.user.Rows[0]["Mã nhân viên"], HelpSHA256.Instance.Hash(txtPassword.Text), HelpSHA256.Instance.Hash(txtNewPassword.Text));
                 if (checkChangPassword)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công");
                     txtPassword.Text = "";
                     txtNewPassword.Text = "";
                     txtComfirmPassword.Text = "";
-                    btnBack.PerformClick();
                 }
                 else
                 {

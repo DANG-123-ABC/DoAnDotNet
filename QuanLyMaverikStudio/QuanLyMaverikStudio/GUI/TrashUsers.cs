@@ -8,22 +8,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace QuanLyMaverikStudio.GUI
 {
     public partial class TrashUsers : Form
     {
+        private DataTable user;
         private int idStaff = -1;
-        public TrashUsers()
+        public TrashUsers(DataTable user)
         {
             InitializeComponent();
+            this.user = user;
 
             Load();
         }
 
         public void Load()
         {
+            dtpDateFrom.Enabled = false;
+            dtpDateTo.Enabled = false;
+            cbTime.Checked = false;
+
             dgvListUsers.DataSource = UsersDAO.Instance.GetAllUsersDeleted();
+            if(dgvListUsers.DataSource != null)
+            {
+                dgvListUsers.Columns["group_id"].Visible = false;
+            }
 
             DataTable dataTable = GroupsDAO.Instance.GetAllGroups();
 
@@ -36,57 +47,18 @@ namespace QuanLyMaverikStudio.GUI
             dataTable.Rows.InsertAt(defaultRow, 0);
 
             // Gán DataTable đã thêm vào ComboBox
-            cmbPermission.DataSource = dataTable;
-            cmbPermission.DisplayMember = "name";
-            cmbPermission.ValueMember = "id";
+            cmbSearchPermission.DataSource = dataTable;
+            cmbSearchPermission.DisplayMember = "name";
+            cmbSearchPermission.ValueMember = "id";
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            txtID.Text = "";
-            txtName.Text = "";
-            txtAccount.Text = "";
-            cmbPermission.SelectedValue = -1;
+            txtSearch.Text = "";
+            cmbSearchPermission.SelectedValue = -1;
+            dtpDateFrom.Value = dtpDateTo.Value = DateTime.Now;
             this.idStaff = -1;
             Load();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            int id;
-            if (txtID.Text == "")
-            {
-                id = -1;
-            }
-            else if (int.TryParse(txtID.Text, out int result))
-            {
-                id = result;
-            }
-            else
-            {
-                MessageBox.Show("Mã nhân viên phải là số nguyên");
-                return;
-            }
-            string name = $"%{txtName.Text}%";
-            string account = $"%{txtAccount.Text}%";
-            int groupID;
-            if (int.TryParse(cmbPermission.SelectedValue.ToString(), out int result1))
-            {
-                groupID = result1;
-            }
-            else
-            {
-                MessageBox.Show("Quyền không hợp lệ");
-                return;
-            }
-            if (cbTime.Checked == false)
-            {
-                dgvListUsers.DataSource = UsersDAO.Instance.SearchDeleted(id, name, account, groupID, "", "");
-            }
-            else
-            {
-                dgvListUsers.DataSource = UsersDAO.Instance.SearchDeleted(id, name, account, groupID, dtpDateFrom.Value.ToString("yyyy/MM/dd"), dtpDateTo.Value.ToString("yyyy/MM/dd"));
-            }
         }
 
         private void dgvListUsers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -136,30 +108,81 @@ namespace QuanLyMaverikStudio.GUI
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void danhSáchNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.idStaff == -1)
+            UsersList usersList = new UsersList(this.user);
+            this.Hide();
+            usersList.ShowDialog();
+            this.Close();
+        }
+
+        private void thùngRácToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đó là trang hiện tại");
+        }
+
+        private void homePageMenuItem_Click(object sender, EventArgs e)
+        {
+            this.user = UsersDAO.Instance.GetUser((int)this.user.Rows[0]["Mã nhân viên"]);
+            HomePage homePage = new HomePage(this.user);
+            this.Hide();
+            homePage.ShowDialog();
+            this.Close();
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            string search = $"%{txtSearch.Text}%";
+            int groupID = -1;
+            if (int.TryParse(cmbSearchPermission.SelectedValue.ToString(), out int result1))
             {
-                MessageBox.Show("Bạn phải chọn 1 nhân viên để xóa");
+                groupID = result1;
+            }
+            if (cbTime.Checked == false)
+            {
+                dgvListUsers.DataSource = UsersDAO.Instance.SearchDeleted(search, groupID, "", "");
             }
             else
             {
-                DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa vĩnh viễn nhân viên có mã là: {this.idStaff} không?\nNếu xóa thì những đơn hàng nhân viên đó chốt sẽ mất theo ảnh hưởng đến thông tin liên quan của khách hàng", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    if (UsersDAO.Instance.Destroy(this.idStaff))
-                    {
-                        MessageBox.Show("xóa thành công");
-                        this.idStaff = -1;
-                        btnReset.PerformClick();
-                    }
-                    else
-                    {
-                        MessageBox.Show("xóa thất bại");
-                    }
-                }
+                dgvListUsers.DataSource = UsersDAO.Instance.SearchDeleted(search, groupID, dtpDateFrom.Value.ToString("yyyy/MM/dd"), dtpDateTo.Value.ToString("yyyy/MM/dd"));
             }
+        }
+
+        private void cbTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTime.Checked == false)
+            {
+                dtpDateFrom.Enabled = false;
+                dtpDateTo.Enabled = false;
+            }
+            else
+            {
+                dtpDateFrom.Enabled = true;
+                dtpDateTo.Enabled = true;
+            }
+        }
+
+        private void changePasswordMenuItem_Click(object sender, EventArgs e)
+        {
+            this.user = UsersDAO.Instance.GetUser((int)this.user.Rows[0]["Mã nhân viên"]);
+            ChangePassword changePassword = new ChangePassword(this.user);
+            changePassword.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login flogin = new Login();
+            this.Hide();
+            flogin.ShowDialog();
+            this.Close();
+        }
+
+        private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoriesManager categoriesManager = new CategoriesManager(this.user);
+            this.Hide();
+            categoriesManager.ShowDialog();
+            this.Close();
         }
     }
 }

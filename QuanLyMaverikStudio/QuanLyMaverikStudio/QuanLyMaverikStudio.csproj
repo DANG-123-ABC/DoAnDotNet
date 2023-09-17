@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\CategoriesDAO.cs" />
+    <Compile Include="GUI\CategoriesManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CategoriesManager.Designer.cs">
+      <DependentUpon>CategoriesManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,12 +71,6 @@
     <Compile Include="GUI\HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\InsertUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\InsertUsers.Designer.cs">
-      <DependentUpon>InsertUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,12 +83,6 @@
     <Compile Include="GUI\TrashUsers.Designer.cs">
       <DependentUpon>TrashUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\UpdateUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\UpdateUsers.Designer.cs">
-      <DependentUpon>UpdateUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helper\HelpSHA256.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,23 +92,20 @@
     <Compile Include="GUI\UsersList.Designer.cs">
       <DependentUpon>UsersList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\CategoriesManager.resx">
+      <DependentUpon>CategoriesManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\InsertUsers.resx">
-      <DependentUpon>InsertUsers.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TrashUsers.resx">
       <DependentUpon>TrashUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\UpdateUsers.resx">
-      <DependentUpon>UpdateUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

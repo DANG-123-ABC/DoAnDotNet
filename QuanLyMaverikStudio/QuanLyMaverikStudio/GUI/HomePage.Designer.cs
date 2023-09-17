@@ -35,7 +35,10 @@
             this.clientMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thêmNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thùngRácToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chuyênMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thùngRácToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +56,6 @@
             this.lbNote = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbNameStaff = new System.Windows.Forms.Label();
-            this.thùngRácToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,6 +64,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(237)))), ((int)(((byte)(158)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.homePageMenuItem,
@@ -69,66 +73,90 @@
             this.orderMenuItem,
             this.clientMenuItem,
             this.staffMenuItem,
+            this.chuyênMụcToolStripMenuItem,
             this.statisticalMenuItem,
             this.tàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1084, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // homePageMenuItem
             // 
+            this.homePageMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(237)))), ((int)(((byte)(158)))));
             this.homePageMenuItem.Name = "homePageMenuItem";
-            this.homePageMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.homePageMenuItem.Size = new System.Drawing.Size(81, 23);
             this.homePageMenuItem.Text = "Trang chủ";
+            this.homePageMenuItem.Click += new System.EventHandler(this.homePageMenuItem_Click);
             // 
             // productMenuItem
             // 
             this.productMenuItem.Name = "productMenuItem";
-            this.productMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.productMenuItem.Size = new System.Drawing.Size(82, 23);
             this.productMenuItem.Text = "Sản phẩm";
             // 
             // orderMenuItem
             // 
             this.orderMenuItem.Name = "orderMenuItem";
-            this.orderMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.orderMenuItem.Size = new System.Drawing.Size(82, 23);
             this.orderMenuItem.Text = "Đơn hàng";
             // 
             // clientMenuItem
             // 
             this.clientMenuItem.Name = "clientMenuItem";
-            this.clientMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.clientMenuItem.Size = new System.Drawing.Size(93, 23);
             this.clientMenuItem.Text = "Khách hàng";
             // 
             // staffMenuItem
             // 
             this.staffMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.danhSáchNhânViênToolStripMenuItem,
-            this.thêmNhânViênToolStripMenuItem,
             this.thùngRácToolStripMenuItem});
             this.staffMenuItem.Name = "staffMenuItem";
-            this.staffMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.staffMenuItem.Size = new System.Drawing.Size(83, 23);
             this.staffMenuItem.Text = "Nhân viên";
             // 
             // danhSáchNhânViênToolStripMenuItem
             // 
             this.danhSáchNhânViênToolStripMenuItem.Name = "danhSáchNhânViênToolStripMenuItem";
-            this.danhSáchNhânViênToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.danhSáchNhânViênToolStripMenuItem.Text = "Danh sách nhân viên";
+            this.danhSáchNhânViênToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.danhSáchNhânViênToolStripMenuItem.Text = "Quản lý";
             this.danhSáchNhânViênToolStripMenuItem.Click += new System.EventHandler(this.danhSáchNhânViênToolStripMenuItem_Click);
             // 
-            // thêmNhânViênToolStripMenuItem
+            // thùngRácToolStripMenuItem
             // 
-            this.thêmNhânViênToolStripMenuItem.Name = "thêmNhânViênToolStripMenuItem";
-            this.thêmNhânViênToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.thêmNhânViênToolStripMenuItem.Text = "Thêm nhân viên";
-            this.thêmNhânViênToolStripMenuItem.Click += new System.EventHandler(this.thêmNhânViênToolStripMenuItem_Click);
+            this.thùngRácToolStripMenuItem.Name = "thùngRácToolStripMenuItem";
+            this.thùngRácToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.thùngRácToolStripMenuItem.Text = "Thùng rác";
+            this.thùngRácToolStripMenuItem.Click += new System.EventHandler(this.thùngRácToolStripMenuItem_Click);
+            // 
+            // chuyênMụcToolStripMenuItem
+            // 
+            this.chuyênMụcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýToolStripMenuItem,
+            this.thùngRácToolStripMenuItem1});
+            this.chuyênMụcToolStripMenuItem.Name = "chuyênMụcToolStripMenuItem";
+            this.chuyênMụcToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.chuyênMụcToolStripMenuItem.Text = "Chuyên mục";
+            // 
+            // quảnLýToolStripMenuItem
+            // 
+            this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.quảnLýToolStripMenuItem.Text = "Quản lý";
+            this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
+            // 
+            // thùngRácToolStripMenuItem1
+            // 
+            this.thùngRácToolStripMenuItem1.Name = "thùngRácToolStripMenuItem1";
+            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(139, 24);
+            this.thùngRácToolStripMenuItem1.Text = "Thùng rác";
             // 
             // statisticalMenuItem
             // 
             this.statisticalMenuItem.Name = "statisticalMenuItem";
-            this.statisticalMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.statisticalMenuItem.Size = new System.Drawing.Size(78, 23);
             this.statisticalMenuItem.Text = "Thống kê";
             // 
             // tàiKhoảnToolStripMenuItem
@@ -137,30 +165,30 @@
             this.changePasswordMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(78, 23);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
             // changePasswordMenuItem
             // 
             this.changePasswordMenuItem.Name = "changePasswordMenuItem";
-            this.changePasswordMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.changePasswordMenuItem.Size = new System.Drawing.Size(161, 24);
             this.changePasswordMenuItem.Text = "Đổi mật khẩu";
             this.changePasswordMenuItem.Click += new System.EventHandler(this.thôngTinTàiKhoảnToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // lbLogo
             // 
             this.lbLogo.AutoSize = true;
-            this.lbLogo.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLogo.Location = new System.Drawing.Point(254, 10);
+            this.lbLogo.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbLogo.Location = new System.Drawing.Point(396, 10);
             this.lbLogo.Name = "lbLogo";
-            this.lbLogo.Size = new System.Drawing.Size(248, 45);
+            this.lbLogo.Size = new System.Drawing.Size(308, 54);
             this.lbLogo.TabIndex = 1;
             this.lbLogo.Text = "Maverik Studio";
             // 
@@ -169,9 +197,9 @@
             this.panel1.Controls.Add(this.lbDate);
             this.panel1.Controls.Add(this.lbTimer);
             this.panel1.Controls.Add(this.lbLogo);
-            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(784, 102);
+            this.panel1.Size = new System.Drawing.Size(1084, 102);
             this.panel1.TabIndex = 2;
             // 
             // lbDate
@@ -208,13 +236,15 @@
             // 
             // btnDiemDanh
             // 
+            this.btnDiemDanh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(237)))), ((int)(((byte)(158)))));
+            this.btnDiemDanh.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDiemDanh.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnDiemDanh.Location = new System.Drawing.Point(17, 165);
+            this.btnDiemDanh.Location = new System.Drawing.Point(8, 162);
             this.btnDiemDanh.Name = "btnDiemDanh";
-            this.btnDiemDanh.Size = new System.Drawing.Size(99, 34);
+            this.btnDiemDanh.Size = new System.Drawing.Size(99, 39);
             this.btnDiemDanh.TabIndex = 3;
             this.btnDiemDanh.Text = "Điểm danh";
-            this.btnDiemDanh.UseVisualStyleBackColor = true;
+            this.btnDiemDanh.UseVisualStyleBackColor = false;
             this.btnDiemDanh.Click += new System.EventHandler(this.btnDiemDanh_Click);
             // 
             // panel2
@@ -224,16 +254,16 @@
             this.panel2.Controls.Add(this.lbNoteItem1);
             this.panel2.Controls.Add(this.btnDiemDanh);
             this.panel2.Controls.Add(this.lbNote);
-            this.panel2.Location = new System.Drawing.Point(396, 144);
+            this.panel2.Location = new System.Drawing.Point(0, 245);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(388, 202);
+            this.panel2.Size = new System.Drawing.Size(303, 210);
             this.panel2.TabIndex = 4;
             // 
             // lbNoteItem2
             // 
             this.lbNoteItem2.AutoSize = true;
             this.lbNoteItem2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lbNoteItem2.Location = new System.Drawing.Point(13, 88);
+            this.lbNoteItem2.Location = new System.Drawing.Point(3, 85);
             this.lbNoteItem2.Name = "lbNoteItem2";
             this.lbNoteItem2.Size = new System.Drawing.Size(289, 21);
             this.lbNoteItem2.TabIndex = 5;
@@ -243,7 +273,7 @@
             // 
             this.lbStatusDiemDanh.AutoSize = true;
             this.lbStatusDiemDanh.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lbStatusDiemDanh.Location = new System.Drawing.Point(13, 125);
+            this.lbStatusDiemDanh.Location = new System.Drawing.Point(3, 122);
             this.lbStatusDiemDanh.Name = "lbStatusDiemDanh";
             this.lbStatusDiemDanh.Size = new System.Drawing.Size(210, 21);
             this.lbStatusDiemDanh.TabIndex = 4;
@@ -253,7 +283,7 @@
             // 
             this.lbNoteItem1.AutoSize = true;
             this.lbNoteItem1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lbNoteItem1.Location = new System.Drawing.Point(13, 51);
+            this.lbNoteItem1.Location = new System.Drawing.Point(3, 48);
             this.lbNoteItem1.Name = "lbNoteItem1";
             this.lbNoteItem1.Size = new System.Drawing.Size(279, 21);
             this.lbNoteItem1.TabIndex = 1;
@@ -264,7 +294,7 @@
             this.lbNote.AutoSize = true;
             this.lbNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNote.ForeColor = System.Drawing.Color.Red;
-            this.lbNote.Location = new System.Drawing.Point(13, 11);
+            this.lbNote.Location = new System.Drawing.Point(3, 8);
             this.lbNote.Margin = new System.Windows.Forms.Padding(0);
             this.lbNote.Name = "lbNote";
             this.lbNote.Size = new System.Drawing.Size(48, 21);
@@ -275,9 +305,9 @@
             // 
             this.panel3.Controls.Add(this.lbNameStaff);
             this.panel3.Controls.Add(this.lbPermission);
-            this.panel3.Location = new System.Drawing.Point(1, 144);
+            this.panel3.Location = new System.Drawing.Point(0, 154);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(389, 164);
+            this.panel3.Size = new System.Drawing.Size(389, 85);
             this.panel3.TabIndex = 5;
             // 
             // lbNameStaff
@@ -290,27 +320,22 @@
             this.lbNameStaff.TabIndex = 5;
             this.lbNameStaff.Text = "Tên: ";
             // 
-            // thùngRácToolStripMenuItem
-            // 
-            this.thùngRácToolStripMenuItem.Name = "thùngRácToolStripMenuItem";
-            this.thùngRácToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.thùngRácToolStripMenuItem.Text = "Thùng rác";
-            this.thùngRácToolStripMenuItem.Click += new System.EventHandler(this.thùngRácToolStripMenuItem_Click);
-            // 
             // HomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1084, 611);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "HomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomePage";
+            this.Text = "Trang chủ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -350,7 +375,9 @@
         private System.Windows.Forms.Label lbNameStaff;
         private System.Windows.Forms.Label lbNoteItem2;
         private System.Windows.Forms.ToolStripMenuItem danhSáchNhânViênToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thêmNhânViênToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thùngRácToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chuyênMụcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thùngRácToolStripMenuItem1;
     }
 }
