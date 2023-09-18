@@ -143,15 +143,16 @@
             // quảnLýToolStripMenuItem
             // 
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
             this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
             // 
             // thùngRácToolStripMenuItem1
             // 
             this.thùngRácToolStripMenuItem1.Name = "thùngRácToolStripMenuItem1";
-            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(139, 24);
+            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.thùngRácToolStripMenuItem1.Text = "Thùng rác";
+            this.thùngRácToolStripMenuItem1.Click += new System.EventHandler(this.thùngRácToolStripMenuItem1_Click);
             // 
             // statisticalMenuItem
             // 

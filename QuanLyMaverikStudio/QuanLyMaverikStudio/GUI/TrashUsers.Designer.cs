@@ -192,6 +192,7 @@
             this.thùngRácToolStripMenuItem1.Name = "thùngRácToolStripMenuItem1";
             this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.thùngRácToolStripMenuItem1.Text = "Thùng rác";
+            this.thùngRácToolStripMenuItem1.Click += new System.EventHandler(this.thùngRácToolStripMenuItem1_Click);
             // 
             // statisticalMenuItem
             // 

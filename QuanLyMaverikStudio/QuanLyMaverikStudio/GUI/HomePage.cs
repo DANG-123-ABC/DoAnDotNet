@@ -132,5 +132,13 @@ namespace QuanLyMaverikStudio
         {
             MessageBox.Show("Đó là trang hiện tại");
         }
+
+        private void thùngRácToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TrashCategories trashCategories = new TrashCategories(this.user);
+            this.Hide();
+            trashCategories.ShowDialog();
+            this.Close();
+        }
     }
 }

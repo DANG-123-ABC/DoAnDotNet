@@ -15,7 +15,6 @@ namespace QuanLyMaverikStudio.GUI
 {
     public partial class CategoriesManager : Form
     {
-        private int idCategory = -1;
         private DataTable user;
         public CategoriesManager(DataTable user)
         {
@@ -32,28 +31,36 @@ namespace QuanLyMaverikStudio.GUI
             cbTime.Checked = false;
 
             DataTable data = CategoriesDAO.Instance.getAllCategories();
-            DataTable dataHandle = data.Clone();
-            LoadCmbParent1(dataHandle, data, -1, "");
-
-            DataTable dataHandleCopy = dataHandle.Copy();
-
-            DataRow defaultRow = dataHandle.NewRow();
-            defaultRow["Mã chuyên mục"] = -1;  // Giá trị id của tùy chọn mặc định
-            defaultRow["Tên chuyên mục"] = "Không";  // Tên hiển thị của tùy chọn mặc định
-            dataHandle.Rows.InsertAt(defaultRow, 0);
-
-            cmbParent.DataSource = dataHandle;
-            cmbParent.DisplayMember = "Tên chuyên mục";
-            cmbParent.ValueMember = "Mã chuyên mục";
-
-            dgvCategoriesList.DataSource = dataHandleCopy;
-            if (dgvCategoriesList.Columns.Contains("parent_id"))
+            if(data != null)
             {
-                dgvCategoriesList.Columns["parent_id"].Visible = false;
+                DataTable dataHandle = data.Clone();
+                LoadCmbParent(dataHandle, data, -1, "");
+
+                DataTable dataHandleCopy = dataHandle.Copy();
+
+                DataRow defaultRow = dataHandle.NewRow();
+                defaultRow["Mã chuyên mục"] = -1;  // Giá trị id của tùy chọn mặc định
+                defaultRow["Tên chuyên mục"] = "Không";  // Tên hiển thị của tùy chọn mặc định
+                dataHandle.Rows.InsertAt(defaultRow, 0);
+
+                cmbParent.DataSource = dataHandle;
+                cmbParent.DisplayMember = "Tên chuyên mục";
+                cmbParent.ValueMember = "Mã chuyên mục";
+
+                DataTable dataHandleCopy2 = dataHandle.Copy();
+                cmbParentInfo.DataSource = dataHandleCopy2;
+                cmbParentInfo.DisplayMember = "Tên chuyên mục";
+                cmbParentInfo.ValueMember = "Mã chuyên mục";
+
+                dgvCategoriesList.DataSource = dataHandleCopy;
+                if (dgvCategoriesList.Columns.Contains("parent_id"))
+                {
+                    dgvCategoriesList.Columns["parent_id"].Visible = false;
+                }
             }
         }
 
-        public void LoadCmbParent1(DataTable dataHandle, DataTable dataTable, int parentID = -1, string space = "")
+        public void LoadCmbParent(DataTable dataHandle, DataTable dataTable, int parentID = -1, string space = "")
         {
             DataTable copy = dataTable.Copy(); // Tạo một bản sao của DataTable
 
@@ -75,37 +82,70 @@ namespace QuanLyMaverikStudio.GUI
                         dataTable.Rows.Remove(rowToRemove);
                     }
 
-                    LoadCmbParent1(dataHandle,dataTable, temp, space + "   ");
+                    LoadCmbParent(dataHandle,dataTable, temp, space + "   ");
                 }
             }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            txtID.Text = "";
             txtName.Text = "";
+            txtNameInfo.Text = "";
+            txtSearch.Text = "";
             cmbParent.SelectedValue = -1;
-            this.idCategory = -1;
+            cmbParentInfo.SelectedValue = -1;
+            cbTime.Checked = false;
+            dtpDateFrom.Value = DateTime.Now;
+            dtpDateTo.Value = DateTime.Now;
+            dgvCategoriesList.DataSource = null;
             Load();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if(txtSearch.Text.Trim() == "")
+            string name = $"%{txtSearch.Text}%";
+            DataTable data = new DataTable();
+            if(cbTime.Checked == false)
             {
-                txtSearch.Text = "";
-                MessageBox.Show("Bạn phải nhập dữ liệu để tìm kiếm");
+                data = CategoriesDAO.Instance.Search(name, "", "", "", "");
+
+                if(data != null)
+                {
+                    dgvCategoriesList.DataSource = data;
+                    if (dgvCategoriesList.Columns.Contains("parent_id"))
+                    {
+                        dgvCategoriesList.Columns["parent_id"].Visible = false;
+                    }
+                }
             }
             else
             {
-                string name = $"%{txtSearch.Text}%";
-
-                DataTable data = CategoriesDAO.Instance.Search(name);
-
-                dgvCategoriesList.DataSource = data;
-
-                if(dgvCategoriesList.Columns.Contains("parent_id"))
+                if(rdoCreated.Checked == true)
                 {
-                    dgvCategoriesList.Columns["parent_id"].Visible = false;
+                    data = CategoriesDAO.Instance.Search(name, dtpDateFrom.Value.ToString("yyyy/MM/dd"), dtpDateTo.Value.ToString("yyyy/MM/dd"), "", "");
+
+                    if(data != null)
+                    {
+                        dgvCategoriesList.DataSource = data;
+                        if (dgvCategoriesList.Columns.Contains("parent_id"))
+                        {
+                            dgvCategoriesList.Columns["parent_id"].Visible = false;
+                        }
+                    }
+                }
+                else
+                {
+                    data = CategoriesDAO.Instance.Search(name, "", "", dtpDateFrom.Value.ToString("yyyy/MM/dd"), dtpDateTo.Value.ToString("yyyy/MM/dd"));
+                    if(data != null)
+                    {
+                        dgvCategoriesList.DataSource = data;
+
+                        if (dgvCategoriesList.Columns.Contains("parent_id"))
+                        {
+                            dgvCategoriesList.Columns["parent_id"].Visible = false;
+                        }
+                    }
                 }
             }
         }
@@ -114,37 +154,63 @@ namespace QuanLyMaverikStudio.GUI
         {
             if(e.RowIndex >= 0)
             {
-                if (int.TryParse(dgvCategoriesList.Rows[e.RowIndex].Cells[0].Value.ToString(), out int result))
+                txtID.Text = dgvCategoriesList.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtNameInfo.Text = dgvCategoriesList.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
+                if(int.TryParse(dgvCategoriesList.Rows[e.RowIndex].Cells[2].Value.ToString(), out int result))
                 {
-                    this.idCategory = result;
-                    txtName.Text = dgvCategoriesList.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
-                    cmbParent.SelectedValue = (int)dgvCategoriesList.Rows[e.RowIndex].Cells[2].Value;
+                    cmbParentInfo.SelectedValue = result;
                 }
-                else
-                {
-                    this.idCategory = -1;
-                }
-                MessageBox.Show(this.idCategory.ToString());
             }
         }
 
+        public bool CheckChild(int id, int parent_id)
+        {
+            DataTable data = CategoriesDAO.Instance.getAllCategories();
+            if(data != null)
+            {
+                DataTable dataHandle = data.Clone();
+                LoadCmbParent(dataHandle, data, id, "");
+
+                for (int i = 0; i < dataHandle.Rows.Count; i++)
+                {
+                    if ((int)dataHandle.Rows[i]["Mã chuyên mục"] == parent_id)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (this.idCategory == -1)
+            if (txtID.Text.Equals(""))
             {
                 MessageBox.Show("Bạn phải chọn 1 chuyên mục để xóa");
             }
-            else
+            else if(int.TryParse(txtID.Text, out int id))
             {
-                DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa chuyên mục có mã là: {this.idCategory} không?\nNếu chuyên mục này có chuyên mục con thì cũng sẽ bị xóa theo", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa chuyên mục có mã là: {id} không?\nNếu chuyên mục này có chuyên mục con thì cũng sẽ bị xóa theo", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     string timeNow = DateTime.Now.ToString();
-                    if (CategoriesDAO.Instance.Delete(this.idCategory, timeNow))
+                    bool check = CategoriesDAO.Instance.Delete(id, timeNow);
+                    DataTable data = CategoriesDAO.Instance.getAllCategories();
+                    if(data != null)
+                    {
+                        DataTable dataHandle = data.Clone();
+                        LoadCmbParent(dataHandle, data, id, "");
+                        for (int i = 0; i < dataHandle.Rows.Count; i++)
+                        {
+                            CategoriesDAO.Instance.Delete((int)dataHandle.Rows[i]["Mã chuyên mục"], timeNow);
+                        }
+                    }
+                    if(check)
                     {
                         MessageBox.Show("Xóa thành công");
-                        this.idCategory = -1;
                         btnReset.PerformClick();
                     }
                     else
@@ -155,15 +221,71 @@ namespace QuanLyMaverikStudio.GUI
             }
         }
 
+        public bool Validate(string txtName)
+        {
+            if(txtName.Trim().Equals(""))
+            {
+                MessageBox.Show("Tên chuyên mục không được để trống");
+                return false;
+            }
+            else if(txtName.Length > 50)
+            {
+                MessageBox.Show("Tên chuyên mục phải nhỏ hơn 50 ký tự");
+                return false;
+            }
+            return true;
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (this.idCategory == -1)
+            if (txtID.Text.Equals(""))
             {
-                MessageBox.Show("Bạn phải chọn 1 chuyên mục để sửa");
+                MessageBox.Show("Bạn phải chọn 1 chuyên mục");
             }
-            else
+            else if(int.TryParse(txtID.Text, out int id) && Validate(txtNameInfo.Text))
             {
+                if(id == (int)cmbParentInfo.SelectedValue)
+                {
+                    MessageBox.Show("Chuyên mục cha không thể là chính nó");
+                }
+                else
+                {
+                    DataTable data = CategoriesDAO.Instance.getAllCategories();
+                    if (data != null)
+                    {
+                        bool test = true;
+                        DataTable dataHandle = data.Clone();
+                        LoadCmbParent(dataHandle, data, id, "");
 
+                        for(int i=0;i<dataHandle.Rows.Count;i++)
+                        {
+                            if((int)cmbParentInfo.SelectedValue == (int)dataHandle.Rows[i]["Mã chuyên mục"])
+                            {
+                                test = false;
+                                break;
+                            }
+                        }
+
+                        if(test)
+                        {
+                            string timeNow = DateTime.Now.ToString();
+
+                            if(CategoriesDAO.Instance.Update(id, (int)cmbParentInfo.SelectedValue, txtNameInfo.Text.Trim(), timeNow))
+                            {
+                                MessageBox.Show("Sửa thành công");
+                                btnReset.PerformClick();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Sửa thất bại");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Chuyên mục cha không thể là con của chuyên mục hiện tại");
+                        }
+                    }
+                }
             }
         }
 
@@ -194,15 +316,15 @@ namespace QuanLyMaverikStudio.GUI
 
         private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CategoriesManager categoriesManager = new CategoriesManager(this.user);
-            this.Hide();
-            categoriesManager.ShowDialog();
-            this.Close();
+            MessageBox.Show("Đó là trang hiện tại");
         }
 
         private void thùngRácToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            TrashCategories trashCategories = new TrashCategories(this.user);
+            this.Hide();
+            trashCategories.ShowDialog();
+            this.Close();
         }
 
         private void thùngRácToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,6 +341,41 @@ namespace QuanLyMaverikStudio.GUI
             this.Hide();
             usersList.ShowDialog();
             this.Close();
+        }
+
+        private void cbTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTime.Checked == false)
+            {
+                dtpDateFrom.Enabled = false;
+                dtpDateTo.Enabled = false;
+                rdoCreated.Enabled = false;
+                rdoUpdated.Enabled = false;
+            }
+            else
+            {
+                dtpDateFrom.Enabled = true;
+                dtpDateTo.Enabled = true;
+                rdoCreated.Enabled = true;
+                rdoUpdated.Enabled = true;
+            }
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            if(Validate(txtName.Text))
+            {
+                string timeNow = DateTime.Now.ToString();
+                if(CategoriesDAO.Instance.Insert(txtName.Text.Trim(), (int)cmbParent.SelectedValue, timeNow))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    btnReset.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
+            }
         }
     }
 }

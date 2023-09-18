@@ -184,5 +184,13 @@ namespace QuanLyMaverikStudio.GUI
             categoriesManager.ShowDialog();
             this.Close();
         }
+
+        private void thùngRácToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TrashCategories trashCategories = new TrashCategories(this.user);
+            this.Hide();
+            trashCategories.ShowDialog();
+            this.Close();
+        }
     }
 }

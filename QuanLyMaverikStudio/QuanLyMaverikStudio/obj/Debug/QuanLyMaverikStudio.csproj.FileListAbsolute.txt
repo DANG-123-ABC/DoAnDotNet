@@ -29,3 +29,4 @@ D:\C#\DoAnDotNet\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverik
 D:\C#\DoAnDotNet\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.exe
 D:\C#\DoAnDotNet\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.pdb
 D:\C#\DoAnDotNet\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.GUI.CategoriesManager.resources
+D:\C#\DoAnDotNet\QuanLyMaverikStudio\QuanLyMaverikStudio\obj\Debug\QuanLyMaverikStudio.GUI.TrashCategories.resources
