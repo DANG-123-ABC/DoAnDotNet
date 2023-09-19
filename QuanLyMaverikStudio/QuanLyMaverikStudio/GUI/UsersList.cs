@@ -78,6 +78,7 @@ namespace QuanLyMaverikStudio
             txtSalary.Text = "";
             txtPhoneNumber.Text = "";
             cmbPermission.SelectedValue = -1;
+            cmbPermission.Enabled = true;
             cmbSearchPermission.SelectedValue = -1;
             txtSearch.Text = "";
             dtpDateOfBirth.Value = DateTime.Now;
@@ -118,16 +119,24 @@ namespace QuanLyMaverikStudio
             {
                 txtID.Text = dgvListUsers.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtName.Text = dgvListUsers.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtAccount.Text = dgvListUsers.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtAddress.Text = dgvListUsers.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtSalary.Text = dgvListUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
-                if (int.TryParse(dgvListUsers.Rows[e.RowIndex].Cells[11].Value.ToString(), out int result))
+                if(dgvListUsers.Rows[e.RowIndex].Cells[2].Value.ToString().Equals("Nam"))
+                {
+                    rdoMale.Checked = true;
+                }
+                else
+                {
+                    rdoFemale.Checked = true;
+                }
+                txtAccount.Text = dgvListUsers.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtAddress.Text = dgvListUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtSalary.Text = dgvListUsers.Rows[e.RowIndex].Cells[5].Value.ToString();
+                if (int.TryParse(dgvListUsers.Rows[e.RowIndex].Cells[12].Value.ToString(), out int result))
                 {
                     cmbPermission.SelectedValue = result;
                 }
-                txtEmail.Text = dgvListUsers.Rows[e.RowIndex].Cells[8].Value.ToString();
-                txtPhoneNumber.Text = dgvListUsers.Rows[e.RowIndex].Cells[9].Value.ToString();
-                if(DateTime.TryParse(dgvListUsers.Rows[e.RowIndex].Cells[10].Value.ToString(), out DateTime result1))
+                txtEmail.Text = dgvListUsers.Rows[e.RowIndex].Cells[9].Value.ToString();
+                txtPhoneNumber.Text = dgvListUsers.Rows[e.RowIndex].Cells[10].Value.ToString();
+                if(DateTime.TryParse(dgvListUsers.Rows[e.RowIndex].Cells[11].Value.ToString(), out DateTime result1))
                 {
                     dtpDateOfBirth.Value = result1;
                 }
@@ -183,7 +192,16 @@ namespace QuanLyMaverikStudio
                 {
                     if (double.TryParse(txtSalary.Text, out double salary))
                     {
-                        Users user = new Users(id, txtName.Text, txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, txtAccount.Text, txtPassword.Text.Equals("") ? "" : HelpSHA256.Instance.Hash(txtPassword.Text), salary, dtpDateOfBirth.Value.ToString(), (int)cmbPermission.SelectedValue, "", DateTime.Now.ToString(), "");
+                        string gender;
+                        if(rdoMale.Checked == true)
+                        {
+                            gender = "Nam";
+                        }
+                        else
+                        {
+                            gender = "Nữ";
+                        }
+                        Users user = new Users(id, txtName.Text, txtAddress.Text, gender, txtEmail.Text, txtPhoneNumber.Text, txtAccount.Text, txtPassword.Text.Equals("") ? "" : HelpSHA256.Instance.Hash(txtPassword.Text), salary, dtpDateOfBirth.Value.ToString(), (int)cmbPermission.SelectedValue, "", DateTime.Now.ToString(), "");
                         return user;
                     }
                     else
@@ -197,7 +215,16 @@ namespace QuanLyMaverikStudio
             {
                 if (double.TryParse(txtSalary.Text, out double salary))
                 {
-                    Users user = new Users(txtName.Text, txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, txtAccount.Text, HelpSHA256.Instance.Hash(txtPassword.Text), salary, dtpDateOfBirth.Value.ToString(), (int)cmbPermission.SelectedValue, DateTime.Now.ToString());
+                    string gender;
+                    if (rdoMale.Checked == true)
+                    {
+                        gender = "Nam";
+                    }
+                    else
+                    {
+                        gender = "Nữ";
+                    }
+                    Users user = new Users(txtName.Text, txtAddress.Text, gender, txtEmail.Text, txtPhoneNumber.Text, txtAccount.Text, HelpSHA256.Instance.Hash(txtPassword.Text), salary, dtpDateOfBirth.Value.ToString(), (int)cmbPermission.SelectedValue, DateTime.Now.ToString());
                     return user;
                 }
                 else

@@ -78,7 +78,7 @@ namespace QuanLyMaverikStudio.DAO
 
         public DataTable GetAllUsers()
         {
-            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.updated_at as 'Thời gian cập nhật', u.email, u.phone_number, u.date_of_birth, u.group_id "+
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.gender as 'Giới tính', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.updated_at as 'Thời gian cập nhật', u.email, u.phone_number, u.date_of_birth, u.group_id "+
                 "from dbo.users as u "+
                 "inner join dbo.groups as g on u.group_id = g.id where u.deleted_at is null "+
                 "order by u.created_at desc";
@@ -97,7 +97,7 @@ namespace QuanLyMaverikStudio.DAO
 
         public DataTable GetAllUsersDeleted()
         {
-            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.email as 'Email', u.phone_number as 'Số điện thoại', u.date_of_birth as 'Ngày sinh', u.group_id, u.deleted_at as 'Thời gian xóa' " +
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.gender as 'Giới tính', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.email as 'Email', u.phone_number as 'Số điện thoại', u.date_of_birth as 'Ngày sinh', u.group_id, u.deleted_at as 'Thời gian xóa' " +
                 "from dbo.users as u " +
                 "inner join dbo.groups as g on u.group_id = g.id where u.deleted_at is not null " +
                 "order by u.deleted_at desc";
@@ -116,7 +116,7 @@ namespace QuanLyMaverikStudio.DAO
 
         public DataTable Search(string search, int group_id, string dateFrom, string dateTo, string dateFrom2, string dateTo2)
         {
-            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.updated_at as 'Thời gian cập nhật', u.email, u.phone_number, u.date_of_birth, u.group_id " +
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.gender as 'Giới tính', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.created_at as 'Thời gian tạo', u.updated_at as 'Thời gian cập nhật', u.email, u.phone_number, u.date_of_birth, u.group_id " +
                 "from dbo.users as u " +
                 "inner join dbo.groups as g on u.group_id = g.id " +
                 "where ((u.name like @name ) or (u.account like @account ) or (u.address like @address )) and (-1 = @group_id1 or u.group_id = @group_id2 ) and ('' = @dateFrom1 or CONVERT(date, u.created_at) >= @dateFrom2 ) and ('' = @dateTo1 or CONVERT(date, u.created_at) <= @dateTo2 ) and ('' = @dateFrom3 or CONVERT(date, u.updated_at) >= @dateFrom4 ) and ('' = @dateTo3 or CONVERT(date, u.updated_at) <= @dateTo4 ) and u.deleted_at is null " +
@@ -135,7 +135,7 @@ namespace QuanLyMaverikStudio.DAO
 
         public DataTable SearchDeleted(string search, int group_id, string dateFrom, string dateTo)
         {
-            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.email as 'Email', u.phone_number as 'Số điện thoại', u.date_of_birth as 'Ngày sinh', u.group_id, u.deleted_at as 'Thời gian xóa' " +
+            string query = "select u.id as 'Mã nhân viên', u.name as 'Tên nhân viên', u.gender as 'Giới tính', u.account as 'Tài khoản', u.address as 'Địa chỉ', u.salary as 'Lương', g.name as 'Quyền', u.email as 'Email', u.phone_number as 'Số điện thoại', u.date_of_birth as 'Ngày sinh', u.group_id, u.deleted_at as 'Thời gian xóa' " +
                 "from dbo.users as u " +
                 "inner join dbo.groups as g on u.group_id = g.id " +
                 "where ((u.name like @name ) or (u.account like @account ) or (u.address like @address )) and (-1 = @group_id1 or u.group_id = @group_id2 ) and (('' = @dateFrom1 or CONVERT(date, u.deleted_at) >= @dateFrom2 ) and ('' = @dateTo1 or CONVERT(date, u.deleted_at) <= @dateTo2 )) and u.deleted_at is not null " +
@@ -210,10 +210,10 @@ namespace QuanLyMaverikStudio.DAO
 
         public bool InsertData(Users user)
         {
-            string query = "insert into dbo.users (name, address, email, phone_number, account, password, salary, date_of_birth, group_id, created_at) " +
-                "values ( @name , @address , @email , @phone_number , @account , @password , @salary , @date_of_birth , @group_id , @created_at )";
+            string query = "insert into dbo.users (name, address, gender, email, phone_number, account, password, salary, date_of_birth, group_id, created_at) " +
+                "values ( @name , @address , @gender , @email , @phone_number , @account , @password , @salary , @date_of_birth , @group_id , @created_at )";
 
-            int r = DataProvider.Instance.ExecuteNonQuery(query, new object[] { user.Name, user.Address, user.Email, user.Phonenumber, user.Account, user.Password, user.Salary, user.DateOfBirth, user.GroupID, user.CreatedAt});
+            int r = DataProvider.Instance.ExecuteNonQuery(query, new object[] { user.Name, user.Address, user.Gender, user.Email, user.Phonenumber, user.Account, user.Password, user.Salary, user.DateOfBirth, user.GroupID, user.CreatedAt});
             
             if(r > 0)
             {
@@ -225,14 +225,14 @@ namespace QuanLyMaverikStudio.DAO
 
         public bool UpdateData(Users user)
         {
-            string query = "update dbo.users set name = @name , address = @address , account = @account , email = @email , password = @password , group_id = @group_id , salary = @salary , date_of_birth = @date_of_birth , phone_number = @phone_number , updated_at = @updated_at " +
+            string query = "update dbo.users set name = @name , address = @address , gender = @gender , account = @account , email = @email , password = @password , group_id = @group_id , salary = @salary , date_of_birth = @date_of_birth , phone_number = @phone_number , updated_at = @updated_at " +
                 "where id = @id ";
             if (user.Password.Equals(""))
             {
-                query = "update dbo.users set name = @name , address = @address , account = @account , email = @email , group_id = @group_id , salary = @salary , date_of_birth = @date_of_birth , phone_number = @phone_number , updated_at = @updated_at " +
+                query = "update dbo.users set name = @name , address = @address , gender = @gender , account = @account , email = @email , group_id = @group_id , salary = @salary , date_of_birth = @date_of_birth , phone_number = @phone_number , updated_at = @updated_at " +
                 "where id = @id ";
 
-                int row = DataProvider.Instance.ExecuteNonQuery(query, new object[] { user.Name, user.Address, user.Account, user.Email, user.GroupID, user.Salary, user.DateOfBirth, user.Phonenumber, user.UpdatedAt, user.ID });
+                int row = DataProvider.Instance.ExecuteNonQuery(query, new object[] { user.Name, user.Address, user.Gender, user.Account, user.Email, user.GroupID, user.Salary, user.DateOfBirth, user.Phonenumber, user.UpdatedAt, user.ID });
 
                 if (row > 0)
                 {

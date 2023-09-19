@@ -12,7 +12,8 @@ namespace QuanLyMaverikStudio.DTO
         public Users(
             int id, 
             string name, 
-            string address, 
+            string address,
+            string gender,
             string email, 
             string phonenumber, 
             string account, 
@@ -27,6 +28,7 @@ namespace QuanLyMaverikStudio.DTO
             this.ID= id;
             this.Name= name;
             this.Address= address;
+            this.Gender= gender;
             this.Email= email;
             this.Phonenumber = phonenumber;
             this.Account= account;
@@ -41,6 +43,7 @@ namespace QuanLyMaverikStudio.DTO
         public Users(
             string name,
             string address,
+            string gender,
             string email,
             string phonenumber,
             string account,
@@ -53,6 +56,7 @@ namespace QuanLyMaverikStudio.DTO
         {
             this.Name = name;
             this.Address = address;
+            this.Gender= gender;
             this.Email = email;
             this.Phonenumber = phonenumber;
             this.Account = account;
@@ -62,29 +66,32 @@ namespace QuanLyMaverikStudio.DTO
             this.GroupID = groupID;
             this.CreatedAt = createdAt;
         }
-        public Users(DataRow row)
-        {
-            this.ID = (int)row["id"];
-            this.Name = row["name"].ToString();
-            this.Address = row["address"].ToString();
-            this.Email = row["email"].ToString();
-            this.Phonenumber = row["phone_number"].ToString();
-            this.Account = row["account"].ToString();
-            this.Password = row["password"].ToString();
-            this.Salary = (double)row["salary"];
-            DateTime dateFromDataTable = (DateTime)row["date_of_birth"];
-            this.DateOfBirth = dateFromDataTable.ToString("dd/MM/yyyy");
-            this.GroupID = (int)row["group_id"];
-            this.CreatedAt = row["created_at"].ToString();
-            this.UpdatedAt = row["updated_at"].ToString();
-            this.DeletedAt = row["deleted_at"].ToString();
-        }
+        //public Users(DataRow row)
+        //{
+        //    this.ID = (int)row["id"];
+        //    this.Name = row["name"].ToString();
+        //    this.Address = row["address"].ToString();
+        //    this.Email = row["email"].ToString();
+        //    this.Phonenumber = row["phone_number"].ToString();
+        //    this.Account = row["account"].ToString();
+        //    this.Password = row["password"].ToString();
+        //    this.Salary = (double)row["salary"];
+        //    DateTime dateFromDataTable = (DateTime)row["date_of_birth"];
+        //    this.DateOfBirth = dateFromDataTable.ToString("dd/MM/yyyy");
+        //    this.GroupID = (int)row["group_id"];
+        //    this.CreatedAt = row["created_at"].ToString();
+        //    this.UpdatedAt = row["updated_at"].ToString();
+        //    this.DeletedAt = row["deleted_at"].ToString();
+        //}
 
         private int iD;
         public int ID { get => iD; set => iD = value; }
 
         private string name;
         public string Name { get => name; set => name = value; }
+
+        private string gender;
+        public string Gender { get => gender; set => gender = value; }
 
         private string address;
         public string Address { get => address;set => address = value; }

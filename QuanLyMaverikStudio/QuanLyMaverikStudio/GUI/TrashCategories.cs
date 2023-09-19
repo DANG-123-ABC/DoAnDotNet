@@ -43,6 +43,16 @@ namespace QuanLyMaverikStudio.GUI
                 cmbParentInfo.DisplayMember = "Tên chuyên mục";
                 cmbParentInfo.ValueMember = "Mã chuyên mục";
             }
+            else
+            {
+                List<object> list2 = new List<object>
+                {
+                    new { Name = "Không", Value = -1 }
+                };
+                cmbParentInfo.DataSource = list2;
+                cmbParentInfo.DisplayMember = "Name";
+                cmbParentInfo.ValueMember = "Value";
+            }
 
             DataTable dataTable = CategoriesDAO.Instance.getAllCategoriesDeleted();
             if(dataTable != null)

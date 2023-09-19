@@ -84,6 +84,9 @@
             this.pnTime = new System.Windows.Forms.Panel();
             this.rdoCreated = new System.Windows.Forms.RadioButton();
             this.rdoUpdated = new System.Windows.Forms.RadioButton();
+            this.lbGender = new System.Windows.Forms.Label();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.rdoFemale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListUsers)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnInfoUser.SuspendLayout();
@@ -156,7 +159,7 @@
             // 
             this.lbID.AutoSize = true;
             this.lbID.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbID.Location = new System.Drawing.Point(8, 16);
+            this.lbID.Location = new System.Drawing.Point(7, 9);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(77, 13);
             this.lbID.TabIndex = 5;
@@ -165,7 +168,7 @@
             // txtID
             // 
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtID.Location = new System.Drawing.Point(12, 32);
+            this.txtID.Location = new System.Drawing.Point(11, 25);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(170, 22);
@@ -174,7 +177,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtName.Location = new System.Drawing.Point(12, 85);
+            this.txtName.Location = new System.Drawing.Point(12, 71);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(170, 22);
             this.txtName.TabIndex = 5;
@@ -183,7 +186,7 @@
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbName.Location = new System.Drawing.Point(8, 69);
+            this.lbName.Location = new System.Drawing.Point(8, 55);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(79, 13);
             this.lbName.TabIndex = 7;
@@ -192,7 +195,7 @@
             // txtAccount
             // 
             this.txtAccount.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtAccount.Location = new System.Drawing.Point(217, 31);
+            this.txtAccount.Location = new System.Drawing.Point(216, 24);
             this.txtAccount.Name = "txtAccount";
             this.txtAccount.Size = new System.Drawing.Size(170, 22);
             this.txtAccount.TabIndex = 1;
@@ -201,7 +204,7 @@
             // 
             this.lbAccount.AutoSize = true;
             this.lbAccount.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbAccount.Location = new System.Drawing.Point(214, 15);
+            this.lbAccount.Location = new System.Drawing.Point(213, 8);
             this.lbAccount.Name = "lbAccount";
             this.lbAccount.Size = new System.Drawing.Size(57, 13);
             this.lbAccount.TabIndex = 9;
@@ -211,7 +214,7 @@
             // 
             this.lbPermission.AutoSize = true;
             this.lbPermission.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbPermission.Location = new System.Drawing.Point(821, 15);
+            this.lbPermission.Location = new System.Drawing.Point(820, 8);
             this.lbPermission.Name = "lbPermission";
             this.lbPermission.Size = new System.Drawing.Size(40, 13);
             this.lbPermission.TabIndex = 11;
@@ -222,7 +225,7 @@
             this.cmbPermission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPermission.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.cmbPermission.FormattingEnabled = true;
-            this.cmbPermission.Location = new System.Drawing.Point(825, 32);
+            this.cmbPermission.Location = new System.Drawing.Point(824, 25);
             this.cmbPermission.Name = "cmbPermission";
             this.cmbPermission.Size = new System.Drawing.Size(221, 21);
             this.cmbPermission.TabIndex = 4;
@@ -370,14 +373,14 @@
             // quảnLýToolStripMenuItem
             // 
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
             this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
             // 
             // thùngRácToolStripMenuItem1
             // 
             this.thùngRácToolStripMenuItem1.Name = "thùngRácToolStripMenuItem1";
-            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(139, 24);
             this.thùngRácToolStripMenuItem1.Text = "Thùng rác";
             this.thùngRácToolStripMenuItem1.Click += new System.EventHandler(this.thùngRácToolStripMenuItem1_Click);
             // 
@@ -399,20 +402,23 @@
             // changePasswordMenuItem
             // 
             this.changePasswordMenuItem.Name = "changePasswordMenuItem";
-            this.changePasswordMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.changePasswordMenuItem.Size = new System.Drawing.Size(161, 24);
             this.changePasswordMenuItem.Text = "Đổi mật khẩu";
             this.changePasswordMenuItem.Click += new System.EventHandler(this.changePasswordMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // pnInfoUser
             // 
             this.pnInfoUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnInfoUser.Controls.Add(this.rdoFemale);
+            this.pnInfoUser.Controls.Add(this.rdoMale);
+            this.pnInfoUser.Controls.Add(this.lbGender);
             this.pnInfoUser.Controls.Add(this.dtpDateOfBirth);
             this.pnInfoUser.Controls.Add(this.lbDateOfBirth);
             this.pnInfoUser.Controls.Add(this.txtSalary);
@@ -445,7 +451,7 @@
             // dtpDateOfBirth
             // 
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(825, 85);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(825, 71);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(221, 22);
             this.dtpDateOfBirth.TabIndex = 9;
@@ -454,7 +460,7 @@
             // 
             this.lbDateOfBirth.AutoSize = true;
             this.lbDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbDateOfBirth.Location = new System.Drawing.Point(821, 69);
+            this.lbDateOfBirth.Location = new System.Drawing.Point(821, 55);
             this.lbDateOfBirth.Name = "lbDateOfBirth";
             this.lbDateOfBirth.Size = new System.Drawing.Size(58, 13);
             this.lbDateOfBirth.TabIndex = 29;
@@ -463,7 +469,7 @@
             // txtSalary
             // 
             this.txtSalary.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtSalary.Location = new System.Drawing.Point(620, 31);
+            this.txtSalary.Location = new System.Drawing.Point(619, 24);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(170, 22);
             this.txtSalary.TabIndex = 3;
@@ -472,7 +478,7 @@
             // 
             this.lbSalary.AutoSize = true;
             this.lbSalary.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbSalary.Location = new System.Drawing.Point(617, 15);
+            this.lbSalary.Location = new System.Drawing.Point(616, 8);
             this.lbSalary.Name = "lbSalary";
             this.lbSalary.Size = new System.Drawing.Size(40, 13);
             this.lbSalary.TabIndex = 27;
@@ -481,7 +487,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtPassword.Location = new System.Drawing.Point(216, 84);
+            this.txtPassword.Location = new System.Drawing.Point(216, 70);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(170, 22);
             this.txtPassword.TabIndex = 6;
@@ -491,7 +497,7 @@
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbPassword.Location = new System.Drawing.Point(213, 69);
+            this.lbPassword.Location = new System.Drawing.Point(213, 55);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(56, 13);
             this.lbPassword.TabIndex = 25;
@@ -500,7 +506,7 @@
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtPhoneNumber.Location = new System.Drawing.Point(620, 84);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(620, 70);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(170, 22);
             this.txtPhoneNumber.TabIndex = 8;
@@ -509,7 +515,7 @@
             // 
             this.lbPhoneNumber.AutoSize = true;
             this.lbPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbPhoneNumber.Location = new System.Drawing.Point(617, 69);
+            this.lbPhoneNumber.Location = new System.Drawing.Point(617, 55);
             this.lbPhoneNumber.Name = "lbPhoneNumber";
             this.lbPhoneNumber.Size = new System.Drawing.Size(76, 13);
             this.lbPhoneNumber.TabIndex = 23;
@@ -518,7 +524,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtEmail.Location = new System.Drawing.Point(419, 84);
+            this.txtEmail.Location = new System.Drawing.Point(419, 70);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(170, 22);
             this.txtEmail.TabIndex = 7;
@@ -527,7 +533,7 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbEmail.Location = new System.Drawing.Point(416, 69);
+            this.lbEmail.Location = new System.Drawing.Point(416, 55);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(34, 13);
             this.lbEmail.TabIndex = 21;
@@ -536,7 +542,7 @@
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.txtAddress.Location = new System.Drawing.Point(420, 31);
+            this.txtAddress.Location = new System.Drawing.Point(419, 24);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(170, 22);
             this.txtAddress.TabIndex = 2;
@@ -545,7 +551,7 @@
             // 
             this.lbAddress.AutoSize = true;
             this.lbAddress.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbAddress.Location = new System.Drawing.Point(417, 15);
+            this.lbAddress.Location = new System.Drawing.Point(416, 8);
             this.lbAddress.Name = "lbAddress";
             this.lbAddress.Size = new System.Drawing.Size(42, 13);
             this.lbAddress.TabIndex = 19;
@@ -647,6 +653,38 @@
             this.rdoUpdated.Text = "Sửa";
             this.rdoUpdated.UseVisualStyleBackColor = true;
             // 
+            // lbGender
+            // 
+            this.lbGender.AutoSize = true;
+            this.lbGender.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lbGender.Location = new System.Drawing.Point(10, 107);
+            this.lbGender.Name = "lbGender";
+            this.lbGender.Size = new System.Drawing.Size(55, 13);
+            this.lbGender.TabIndex = 30;
+            this.lbGender.Text = "Giới tính:";
+            // 
+            // rdoMale
+            // 
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Checked = true;
+            this.rdoMale.Location = new System.Drawing.Point(71, 105);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(48, 17);
+            this.rdoMale.TabIndex = 27;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Nam";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
+            // rdoFemale
+            // 
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Location = new System.Drawing.Point(121, 105);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.Size = new System.Drawing.Size(40, 17);
+            this.rdoFemale.TabIndex = 31;
+            this.rdoFemale.Text = "Nữ";
+            this.rdoFemale.UseVisualStyleBackColor = true;
+            // 
             // UsersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,5 +777,8 @@
         private System.Windows.Forms.Panel pnTime;
         private System.Windows.Forms.RadioButton rdoCreated;
         private System.Windows.Forms.RadioButton rdoUpdated;
+        private System.Windows.Forms.RadioButton rdoFemale;
+        private System.Windows.Forms.RadioButton rdoMale;
+        private System.Windows.Forms.Label lbGender;
     }
 }

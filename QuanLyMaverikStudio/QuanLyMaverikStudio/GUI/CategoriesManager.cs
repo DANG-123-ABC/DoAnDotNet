@@ -58,6 +58,24 @@ namespace QuanLyMaverikStudio.GUI
                     dgvCategoriesList.Columns["parent_id"].Visible = false;
                 }
             }
+            else
+            {
+                List<object> list = new List<object>
+                {
+                    new { Name = "Không", Value = -1 }
+                };
+                cmbParent.DataSource = list;
+                cmbParent.DisplayMember = "Name";
+                cmbParent.ValueMember = "Value";
+
+                List<object> list2 = new List<object>
+                {
+                    new { Name = "Không", Value = -1 }
+                };
+                cmbParentInfo.DataSource = list2;
+                cmbParentInfo.DisplayMember = "Name";
+                cmbParentInfo.ValueMember = "Value";
+            }
         }
 
         public void LoadCmbParent(DataTable dataHandle, DataTable dataTable, int parentID = -1, string space = "")
