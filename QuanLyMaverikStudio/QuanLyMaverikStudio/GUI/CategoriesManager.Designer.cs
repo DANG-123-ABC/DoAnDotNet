@@ -81,13 +81,17 @@
             // 
             // dgvCategoriesList
             // 
+            this.dgvCategoriesList.AllowUserToAddRows = false;
+            this.dgvCategoriesList.AllowUserToResizeRows = false;
             this.dgvCategoriesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategoriesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoriesList.Location = new System.Drawing.Point(12, 231);
             this.dgvCategoriesList.MultiSelect = false;
             this.dgvCategoriesList.Name = "dgvCategoriesList";
             this.dgvCategoriesList.ReadOnly = true;
+            this.dgvCategoriesList.RowHeadersVisible = false;
             this.dgvCategoriesList.RowHeadersWidth = 30;
+            this.dgvCategoriesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategoriesList.Size = new System.Drawing.Size(1060, 368);
             this.dgvCategoriesList.TabIndex = 1;
             this.dgvCategoriesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriesList_CellClick);
@@ -515,7 +519,7 @@
             // CategoriesManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1084, 611);
+            this.ClientSize = new System.Drawing.Size(1084, 612);
             this.Controls.Add(this.lbInsert);
             this.Controls.Add(this.pnInfo);
             this.Controls.Add(this.menuStrip1);

@@ -63,6 +63,9 @@
             this.changePasswordMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnInfoUser = new System.Windows.Forms.Panel();
+            this.rdoFemale = new System.Windows.Forms.RadioButton();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.lbGender = new System.Windows.Forms.Label();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.lbDateOfBirth = new System.Windows.Forms.Label();
             this.txtSalary = new System.Windows.Forms.TextBox();
@@ -84,9 +87,6 @@
             this.pnTime = new System.Windows.Forms.Panel();
             this.rdoCreated = new System.Windows.Forms.RadioButton();
             this.rdoUpdated = new System.Windows.Forms.RadioButton();
-            this.lbGender = new System.Windows.Forms.Label();
-            this.rdoMale = new System.Windows.Forms.RadioButton();
-            this.rdoFemale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListUsers)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnInfoUser.SuspendLayout();
@@ -96,13 +96,17 @@
             // 
             // dgvListUsers
             // 
+            this.dgvListUsers.AllowUserToAddRows = false;
+            this.dgvListUsers.AllowUserToResizeRows = false;
             this.dgvListUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListUsers.Location = new System.Drawing.Point(12, 329);
             this.dgvListUsers.MultiSelect = false;
             this.dgvListUsers.Name = "dgvListUsers";
             this.dgvListUsers.ReadOnly = true;
+            this.dgvListUsers.RowHeadersVisible = false;
             this.dgvListUsers.RowHeadersWidth = 30;
+            this.dgvListUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListUsers.Size = new System.Drawing.Size(1060, 270);
             this.dgvListUsers.TabIndex = 20;
             this.dgvListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListUsers_CellClick);
@@ -448,6 +452,38 @@
             this.pnInfoUser.Size = new System.Drawing.Size(1060, 175);
             this.pnInfoUser.TabIndex = 20;
             // 
+            // rdoFemale
+            // 
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Location = new System.Drawing.Point(121, 105);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.Size = new System.Drawing.Size(40, 17);
+            this.rdoFemale.TabIndex = 31;
+            this.rdoFemale.Text = "Nữ";
+            this.rdoFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdoMale
+            // 
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Checked = true;
+            this.rdoMale.Location = new System.Drawing.Point(71, 105);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(48, 17);
+            this.rdoMale.TabIndex = 27;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Nam";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
+            // lbGender
+            // 
+            this.lbGender.AutoSize = true;
+            this.lbGender.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lbGender.Location = new System.Drawing.Point(10, 107);
+            this.lbGender.Name = "lbGender";
+            this.lbGender.Size = new System.Drawing.Size(55, 13);
+            this.lbGender.TabIndex = 30;
+            this.lbGender.Text = "Giới tính:";
+            // 
             // dtpDateOfBirth
             // 
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -653,43 +689,11 @@
             this.rdoUpdated.Text = "Sửa";
             this.rdoUpdated.UseVisualStyleBackColor = true;
             // 
-            // lbGender
-            // 
-            this.lbGender.AutoSize = true;
-            this.lbGender.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lbGender.Location = new System.Drawing.Point(10, 107);
-            this.lbGender.Name = "lbGender";
-            this.lbGender.Size = new System.Drawing.Size(55, 13);
-            this.lbGender.TabIndex = 30;
-            this.lbGender.Text = "Giới tính:";
-            // 
-            // rdoMale
-            // 
-            this.rdoMale.AutoSize = true;
-            this.rdoMale.Checked = true;
-            this.rdoMale.Location = new System.Drawing.Point(71, 105);
-            this.rdoMale.Name = "rdoMale";
-            this.rdoMale.Size = new System.Drawing.Size(48, 17);
-            this.rdoMale.TabIndex = 27;
-            this.rdoMale.TabStop = true;
-            this.rdoMale.Text = "Nam";
-            this.rdoMale.UseVisualStyleBackColor = true;
-            // 
-            // rdoFemale
-            // 
-            this.rdoFemale.AutoSize = true;
-            this.rdoFemale.Location = new System.Drawing.Point(121, 105);
-            this.rdoFemale.Name = "rdoFemale";
-            this.rdoFemale.Size = new System.Drawing.Size(40, 17);
-            this.rdoFemale.TabIndex = 31;
-            this.rdoFemale.Text = "Nữ";
-            this.rdoFemale.UseVisualStyleBackColor = true;
-            // 
             // UsersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 611);
+            this.ClientSize = new System.Drawing.Size(1084, 612);
             this.Controls.Add(this.rdoUpdated);
             this.Controls.Add(this.rdoCreated);
             this.Controls.Add(this.pnTime);

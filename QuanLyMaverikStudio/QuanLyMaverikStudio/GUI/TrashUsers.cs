@@ -192,5 +192,13 @@ namespace QuanLyMaverikStudio.GUI
             trashCategories.ShowDialog();
             this.Close();
         }
+
+        private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SellOrders sellOrders = new SellOrders(this.user);
+            this.Hide();
+            sellOrders.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -35,6 +35,9 @@
             this.homePageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đóngGóiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.danhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +93,8 @@
             // 
             // dgvListUsers
             // 
+            this.dgvListUsers.AllowUserToAddRows = false;
+            this.dgvListUsers.AllowUserToResizeRows = false;
             this.dgvListUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListUsers.Location = new System.Drawing.Point(12, 184);
@@ -138,9 +143,32 @@
             // 
             // orderMenuItem
             // 
+            this.orderMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bánHàngToolStripMenuItem,
+            this.đóngGóiToolStripMenuItem,
+            this.danhSáchToolStripMenuItem});
             this.orderMenuItem.Name = "orderMenuItem";
             this.orderMenuItem.Size = new System.Drawing.Size(82, 23);
             this.orderMenuItem.Text = "Đơn hàng";
+            // 
+            // bánHàngToolStripMenuItem
+            // 
+            this.bánHàngToolStripMenuItem.Name = "bánHàngToolStripMenuItem";
+            this.bánHàngToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.bánHàngToolStripMenuItem.Text = "Bán hàng";
+            this.bánHàngToolStripMenuItem.Click += new System.EventHandler(this.bánHàngToolStripMenuItem_Click);
+            // 
+            // đóngGóiToolStripMenuItem
+            // 
+            this.đóngGóiToolStripMenuItem.Name = "đóngGóiToolStripMenuItem";
+            this.đóngGóiToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.đóngGóiToolStripMenuItem.Text = "Đóng gói";
+            // 
+            // danhSáchToolStripMenuItem
+            // 
+            this.danhSáchToolStripMenuItem.Name = "danhSáchToolStripMenuItem";
+            this.danhSáchToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.danhSáchToolStripMenuItem.Text = "Danh sách";
             // 
             // clientMenuItem
             // 
@@ -183,14 +211,14 @@
             // quảnLýToolStripMenuItem
             // 
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
             this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
             // 
             // thùngRácToolStripMenuItem1
             // 
             this.thùngRácToolStripMenuItem1.Name = "thùngRácToolStripMenuItem1";
-            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.thùngRácToolStripMenuItem1.Size = new System.Drawing.Size(139, 24);
             this.thùngRácToolStripMenuItem1.Text = "Thùng rác";
             this.thùngRácToolStripMenuItem1.Click += new System.EventHandler(this.thùngRácToolStripMenuItem1_Click);
             // 
@@ -352,7 +380,7 @@
             // TrashUsers
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1084, 611);
+            this.ClientSize = new System.Drawing.Size(1084, 612);
             this.Controls.Add(this.pnTime);
             this.Controls.Add(this.lbFilter);
             this.Controls.Add(this.pnFilter);
@@ -409,5 +437,8 @@
         private System.Windows.Forms.Label lbSearchPermission;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckBox cbTime;
+        private System.Windows.Forms.ToolStripMenuItem bánHàngToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đóngGóiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem danhSáchToolStripMenuItem;
     }
 }

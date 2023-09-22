@@ -26,11 +26,7 @@ namespace QuanLyMaverikStudio.DAO
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
-            if(data.Rows.Count > 0 )
-            {
-                return data;
-            }
-            return null;
+            return data;
         }
 
         public DataTable getAllCategoriesDeleted()
